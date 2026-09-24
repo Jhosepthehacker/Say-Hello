@@ -2,12 +2,12 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 
 client_ip = None
-global client_ip
 
 app = FastAPI()
 
 @app.get('/home', tags=["Home"])
 def home(response: Request):
+    global client_ip
     client_ip = response.client.host
 
     return HTMLResponse(
