@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Resquest
 from fastapi.responses import HTMLResponse
 
 client_ip = None
@@ -7,8 +7,8 @@ global client_ip
 app = FastAPI()
 
 @app.get('/home', tags=["Home"])
-def home(response: Response):
-    client_ip = response.client_host
+def home(response: Request):
+    client_ip = response.client.host
 
     return HTMLResponse(
       """
