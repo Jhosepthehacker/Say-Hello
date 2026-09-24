@@ -1,6 +1,9 @@
 from fastapi import FastAPI, Response
 from fastapi.responses import HTMLResponse
 
+client_ip = None
+global client_ip
+
 app = FastAPI()
 
 @app.get('/home', tags=["Home"])
