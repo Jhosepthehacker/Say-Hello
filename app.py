@@ -37,9 +37,9 @@ def bounty():
               
               }
               const add_ip = () => {
-                const new_ip = "{client_ip}";
+                const new_ip = {client_ip};
 
-                containerHTML = "<ul><br><li>${new_ip}</li><ul>
+                containerHTML = "<ul><br><li>${new_ip}</li></ul>
               }
             </script>
         """
