@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Resquest
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 
 client_ip = None
