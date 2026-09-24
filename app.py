@@ -25,3 +25,21 @@ def home(response: Response):
         </html>
       """
     )
+
+@app.get('/bounty', tags=["Bounty Logs"])
+def bounty():
+    return HTMLResponse(
+        f"""
+          <body>
+            <script>
+              const parche_vulnerability_xss = () => {
+              
+              }
+              const add_ip = () => {
+                const new_ip = "{client_ip}";
+
+                containerHTML = "<ul><br><li>${new_ip}</li><ul>
+              }
+            </script>
+        """
+    )
