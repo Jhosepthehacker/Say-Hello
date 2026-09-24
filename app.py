@@ -34,11 +34,11 @@ def bounty():
           <body>
             <script>
               // const parche_vulnerability_xss = undefined;
-              const add_ip = () => {
+              const add_ip = () => {{
                 const new_ip = {client_ip};
 
                 containerHTML = "<ul><br><li>{new_ip}</li></ul>
-              }
+              }}
             </script>
         """
     )
