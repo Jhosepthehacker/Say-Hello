@@ -6,9 +6,9 @@ client_ip = None
 app = FastAPI()
 
 @app.get('/home', tags=["Home"])
-def home(response: Request):
+def home(request: Request):  # Cambiado por claridad
     global client_ip
-    client_ip = response.client.host
+    client_ip = request.client.host if request.client else "Desconocida"
 
     return HTMLResponse(
       """
@@ -31,14 +31,23 @@ def home(response: Request):
 def bounty():
     return HTMLResponse(
         f"""
+        <!DOCTYPE html>
+        <html lang="es">
+          <head><title>Bounty Logs</title></head>
           <body>
+            <div id="log-container"></div>
             <script>
-              // const parche_vulnerability_xss = undefined;
               const add_ip = () => {{
+                // 1. Las comillas alrededor de la variable de Python son obligatorias en JS
                 const new_ip = "{client_ip}";
-
-                container.innerHTML = "<ul><br><li>{new_ip}</li></ul>
-              }}
+                
+                // 2. Buscamos el contenedor real en el DOM y cerramos bien las comillas
+                const container = document.getElementById("log-container");
+                container.innerHTML = "<ul><li>" + new_ip + "</li></ul>";
+              }};
+              add_ip();
             </script>
+          </body>
+        </html>
         """
     )
